@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Styrka.</title>
+<title>Gym Buddy.</title>
 <style>
   :root{
     --green:#059669;
@@ -393,7 +393,7 @@
 <div class="wrap">
   <header>
     <div class="hrow">
-      <h1>Styrka<span class="dot">.</span></h1>
+      <h1>Gym Buddy<span class="dot">.</span></h1>
       <span class="pill" id="savepill"></span>
     </div>
   </header>
@@ -655,6 +655,8 @@ function render(){
   const main=document.getElementById("main");
   main.innerHTML=S.view==="home"?renderHome():S.view==="workout"?renderWorkout():S.view==="analytics"?renderAnalytics():renderHistory();
   document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("on",b.dataset.view===S.view));
+  const activeTab=document.querySelector(".tabs .tab.on");
+  if(activeTab)activeTab.scrollIntoView({block:"nearest",inline:"center"});
   const sel=document.getElementById("progress-select");
   if(sel)sel.addEventListener("change",e=>{S.progressEx=e.target.value;render()});
 }
